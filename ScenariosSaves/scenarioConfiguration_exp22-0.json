@@ -1,0 +1,388 @@
+{
+  "constants": {
+    "startIteration": 0,
+    "iterationCount": 1000,
+    "randomSeed": 539662031
+  },
+  "randomizers": {
+    "randomizerGroups": [
+      {
+        "randomizerId": "BackgroundObjectPlacementRandomizer",
+        "metadata": {
+          "name": "",
+          "description": "",
+          "imageLink": ""
+        },
+        "state": {
+          "enabled": true,
+          "canBeSwitchedByUser": true
+        },
+        "items": {
+          "depth": {
+            "scalar": {
+              "metadata": {
+                "name": "",
+                "description": "",
+                "imageLink": ""
+              },
+              "value": {
+                "num": 4.0
+              }
+            }
+          },
+          "layerCount": {
+            "scalar": {
+              "metadata": {
+                "name": "",
+                "description": "",
+                "imageLink": ""
+              },
+              "value": {
+                "num": 2.0
+              }
+            }
+          },
+          "separationDistance": {
+            "scalar": {
+              "metadata": {
+                "name": "",
+                "description": "",
+                "imageLink": ""
+              },
+              "value": {
+                "num": 0.800000011920929
+              }
+            }
+          }
+        }
+      },
+      {
+        "randomizerId": "RotationRandomizer",
+        "metadata": {
+          "name": "",
+          "description": "",
+          "imageLink": ""
+        },
+        "state": {
+          "enabled": true,
+          "canBeSwitchedByUser": true
+        },
+        "items": {
+          "rotation": {
+            "param": {
+              "metadata": {
+                "name": "",
+                "description": "",
+                "imageLink": ""
+              },
+              "items": {
+                "x": {
+                  "samplerOptions": {
+                    "metadata": {
+                      "name": "",
+                      "description": "",
+                      "imageLink": ""
+                    },
+                    "uniform": {
+                      "min": 0.0,
+                      "max": 360.0
+                    }
+                  }
+                },
+                "y": {
+                  "samplerOptions": {
+                    "metadata": {
+                      "name": "",
+                      "description": "",
+                      "imageLink": ""
+                    },
+                    "uniform": {
+                      "min": 0.0,
+                      "max": 360.0
+                    }
+                  }
+                },
+                "z": {
+                  "samplerOptions": {
+                    "metadata": {
+                      "name": "",
+                      "description": "",
+                      "imageLink": ""
+                    },
+                    "uniform": {
+                      "min": 0.0,
+                      "max": 360.0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "randomizerId": "ForegroundRandomizerColision",
+        "metadata": {
+          "name": "",
+          "description": "",
+          "imageLink": ""
+        },
+        "state": {
+          "enabled": true,
+          "canBeSwitchedByUser": true
+        },
+        "items": {
+          "depth": {
+            "scalar": {
+              "metadata": {
+                "name": "",
+                "description": "",
+                "imageLink": ""
+              },
+              "value": {
+                "num": 0.0
+              }
+            }
+          },
+          "separationDistance": {
+            "scalar": {
+              "metadata": {
+                "name": "",
+                "description": "",
+                "imageLink": ""
+              },
+              "value": {
+                "num": 0.800000011920929
+              }
+            }
+          },
+          "ArrangementProb": {
+            "scalar": {
+              "metadata": {
+                "name": "",
+                "description": "",
+                "imageLink": ""
+              },
+              "value": {
+                "num": 50.0
+              }
+            }
+          },
+          "streptoProbability": {
+            "scalar": {
+              "metadata": {
+                "name": "",
+                "description": "",
+                "imageLink": ""
+              },
+              "value": {
+                "num": 20.0
+              }
+            }
+          }
+        }
+      },
+      {
+        "randomizerId": "MyAnimationRandomizer",
+        "metadata": {
+          "name": "",
+          "description": "",
+          "imageLink": ""
+        },
+        "state": {
+          "enabled": true,
+          "canBeSwitchedByUser": true
+        },
+        "items": {
+          "animationDuration": {
+            "scalar": {
+              "metadata": {
+                "name": "",
+                "description": "",
+                "imageLink": ""
+              },
+              "value": {
+                "num": 15.0
+              }
+            }
+          }
+        }
+      },
+      {
+        "randomizerId": "ColorRandomizer",
+        "metadata": {
+          "name": "",
+          "description": "",
+          "imageLink": ""
+        },
+        "state": {
+          "enabled": true,
+          "canBeSwitchedByUser": true
+        },
+        "items": {
+          "colorParameter": {
+            "param": {
+              "metadata": {
+                "name": "",
+                "description": "",
+                "imageLink": ""
+              },
+              "items": {
+                "hue": {
+                  "samplerOptions": {
+                    "metadata": {
+                      "name": "",
+                      "description": "",
+                      "imageLink": ""
+                    },
+                    "uniform": {
+                      "min": 0.0,
+                      "max": 1.0
+                    }
+                  }
+                },
+                "saturation": {
+                  "samplerOptions": {
+                    "metadata": {
+                      "name": "",
+                      "description": "",
+                      "imageLink": ""
+                    },
+                    "uniform": {
+                      "min": 0.0,
+                      "max": 1.0
+                    }
+                  }
+                },
+                "value": {
+                  "samplerOptions": {
+                    "metadata": {
+                      "name": "",
+                      "description": "",
+                      "imageLink": ""
+                    },
+                    "uniform": {
+                      "min": 0.0,
+                      "max": 1.0
+                    }
+                  }
+                },
+                "alpha": {
+                  "samplerOptions": {
+                    "metadata": {
+                      "name": "",
+                      "description": "",
+                      "imageLink": ""
+                    },
+                    "constant": {
+                      "value": 1.0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "randomizerId": "SunAngleRandomizer",
+        "metadata": {
+          "name": "",
+          "description": "",
+          "imageLink": ""
+        },
+        "state": {
+          "enabled": true,
+          "canBeSwitchedByUser": true
+        },
+        "items": {
+          "hour": {
+            "param": {
+              "metadata": {
+                "name": "",
+                "description": "",
+                "imageLink": ""
+              },
+              "items": {
+                "value": {
+                  "samplerOptions": {
+                    "metadata": {
+                      "name": "",
+                      "description": "",
+                      "imageLink": ""
+                    },
+                    "uniform": {
+                      "min": 0.0,
+                      "max": 24.0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "dayOfTheYear": {
+            "param": {
+              "metadata": {
+                "name": "",
+                "description": "",
+                "imageLink": ""
+              },
+              "items": {
+                "value": {
+                  "samplerOptions": {
+                    "metadata": {
+                      "name": "",
+                      "description": "",
+                      "imageLink": ""
+                    },
+                    "uniform": {
+                      "min": 0.0,
+                      "max": 364.0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "latitude": {
+            "param": {
+              "metadata": {
+                "name": "",
+                "description": "",
+                "imageLink": ""
+              },
+              "items": {
+                "value": {
+                  "samplerOptions": {
+                    "metadata": {
+                      "name": "",
+                      "description": "",
+                      "imageLink": ""
+                    },
+                    "uniform": {
+                      "min": -90.0,
+                      "max": 90.0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "randomizerId": "LightRandomizer",
+        "metadata": {
+          "name": "",
+          "description": "",
+          "imageLink": ""
+        },
+        "state": {
+          "enabled": true,
+          "canBeSwitchedByUser": true
+        },
+        "items": {}
+      }
+    ]
+  }
+}
