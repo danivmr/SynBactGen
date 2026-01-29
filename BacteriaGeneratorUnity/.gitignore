@@ -1,0 +1,16 @@
+*
+
+!Assets/
+!Assets/Art/
+!Assets/Art/**
+!Assets/Scripts/
+!Assets/Scripts/**
+!Assets/Samples/
+!Assets/Samples/**
+!**.unity
+
+!.gitignore
+!.gitattributes
+
+Assets/Samples/Perception
+
