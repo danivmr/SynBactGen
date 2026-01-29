@@ -6,3 +6,8 @@
 *.prefab text eol=lf
 *.controller text eol=lf
 *.mat text eol=lf
+# Unity text files
+*.json    text eol=lf
+*.txt     text eol=lf
+*.yaml    text eol=lf
+*.yml     text eol=lf

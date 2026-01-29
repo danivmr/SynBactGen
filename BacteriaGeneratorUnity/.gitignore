@@ -1,16 +1,25 @@
-*
+# Unity generated
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
 
-!Assets/
-!Assets/Art/
-!Assets/Art/**
-!Assets/Scripts/
-!Assets/Scripts/**
-!Assets/Samples/
-!Assets/Samples/**
-!**.unity
 
-!.gitignore
-!.gitattributes
+# IDE
+.vs/
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
 
 Assets/Samples/Perception
 
+# Unity Version Control (Plastic SCM)
+.plastic/
+plastic.workspace
+plastic.workspaces
