@@ -1,0 +1,25 @@
+# Unity generated
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
+
+
+# IDE
+.vs/
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+Assets/Samples/Perception
+
+# Unity Version Control (Plastic SCM)
+.plastic/
+plastic.workspace
+plastic.workspaces

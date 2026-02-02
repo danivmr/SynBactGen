@@ -1,3 +1,0 @@
-Aqui van las texturas de los objetos de fondo (vidrio-rectangulo, trombo-lente)
-La textura del fondo (vidrio rectangulo) puede tener la suciedad en la imagen
-o la suciedad puede ser otro tipo de background de fondo. <- mejor opción

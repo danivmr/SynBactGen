@@ -1,2 +1,0 @@
-El material es la forma en que se comporta el objeto con la luz. Deberia ser similar para todas 
-las bacterias, ya que todas tienen un material parecido.
