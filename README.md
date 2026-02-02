@@ -6,3 +6,8 @@ The system creates synthetic images alongside automated annotations. Each bacter
 Example Output
 
 ![rgb_35_png rf 81a9dc179e1ebe584a59d336e3db3a5c](https://user-images.githubusercontent.com/39756160/209593648-2cad8bca-ca55-4a11-9654-c24508e75147.jpg)
+
+
+## Step by step guide
+
+1. ...

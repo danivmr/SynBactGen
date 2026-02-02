@@ -696,7 +696,7 @@ MonoBehaviour:
         <enabledStateCanBeSwitchedByUser>k__BackingField: 1
         depth: -1
         separationDistance: 0.4
-        placementArea: {x: 3, y: 3}
+        placementArea: {x: 4, y: 4}
         prefabs:
           collapsed: 0
           probabilities:
@@ -742,7 +742,6 @@ MonoBehaviour:
           - {fileID: 4911491973593785565, guid: 42a0d77f40556534faebb502a7fd5519, type: 3}
           - {fileID: 6415015889243632637, guid: 5635757e539560d4e84ae3e1821a87e9, type: 3}
           - {fileID: 6457443748627977814, guid: e0d1b077592d2504392568ee999f8aef, type: 3}
-        ArrangementProb: 50
         maxChainLength: 6
         maxBendAngle: 25
         scale:
