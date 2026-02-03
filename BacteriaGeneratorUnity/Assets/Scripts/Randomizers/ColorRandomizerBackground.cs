@@ -3,14 +3,14 @@ using UnityEngine.Perception.Randomization.Parameters;
 using UnityEngine.Perception.Randomization.Randomizers.Tags;
 using UnityEngine.Scripting.APIUpdating;
 
-namespace UnityEngine.Perception.Randomization.Randomizers
+namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
 {
     /// <summary>
     /// Randomizes the material color of objects tagged with a ColorRandomizerTag
     /// </summary>
     [Serializable]
-    [AddRandomizerMenu("Bacteria/Color Randomizer Background")]
-    [MovedFrom("UnityEngine.Perception.Randomization.Randomizers.SampleRandomizers")]
+    [AddRandomizerMenu("SynBactGen/Color Randomizer Background")]
+    [MovedFrom("UnityEngine.Perception.Randomization.Randomizers.SynBactGen")]
     public class ColorRandomizerBackground : Randomizer
     {
         static readonly int k_BaseColor = Shader.PropertyToID("_BaseColor");
