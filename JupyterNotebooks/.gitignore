@@ -1,2 +1,15 @@
 credentials.json
 /shared
+/Experiments
+/Experiments/**
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment
+.env
+.venv
+venv/
+env/

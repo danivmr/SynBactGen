@@ -4,14 +4,14 @@ using UnityEngine.Perception.Randomization.Randomizers.Tags;
 using UnityEngine.Perception.Randomization.Samplers;
 using UnityEngine.Scripting.APIUpdating;
 
-namespace UnityEngine.Perception.Randomization.Randomizers
+namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
 {
     /// <summary>
-    /// Randomizes the rotation of objects tagged with a RotationRandomizerTag
+    /// Randomizes the rotation of objects tagged with a BackgroundRotationRandomizerTag
     /// </summary>
     [Serializable]
-    [AddRandomizerMenu("Perception/Background Rotation Randomizer2")]
-    [MovedFrom("UnityEngine.Perception.Randomization.Randomizers.SampleRandomizers")]
+    [AddRandomizerMenu("SynBactGen/Background Rotation Randomizer")]
+    [MovedFrom("UnityEngine.Perception.Randomization.Randomizers.SynBactGen")]
     public class BackgroundRotationRandomizer : Randomizer
     {
         /// <summary>
