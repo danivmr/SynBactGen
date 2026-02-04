@@ -62,7 +62,7 @@ The files within the sequence folders and `annotation_definition.json` are used 
 
 ### Converting to YOLO Format
 
-Use the provided Jupyter notebook to convert the dataset format. Follow the instructions in `JupyterNotebooks/ConvertFormatToYOLO.ipynb`.
+Use the provided Jupyter notebook to convert the dataset format. Follow the instructions in [ConvertFormatToYOLO.ipynb](`JupyterNotebooks/ConvertFormatToYOLO.ipynb`).
 
 ## 3. Model Training
 
