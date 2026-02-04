@@ -19,7 +19,7 @@ The system creates synthetic images alongside automated annotations. Each bacter
 1. Clone the repository using Git
 2. Open Unity Hub and select "Add project from disk"
 
-![alt text](image.png)
+![alt text](Resources/TutorialImages/image.png)
 
 3. Navigate to the `BacteriaGeneratorUnity` folder from the cloned repository and select it. Use Unity Editor version 2021.3.18f1.
 
@@ -29,15 +29,15 @@ The system creates synthetic images alongside automated annotations. Each bacter
 
 6. Navigate to the simulation scenario to view the configured randomizers. Refer to the Randomizers and Configurations section below for customization details. 
 
-![alt text](image-1.png)
+![alt text](Resources/TutorialImages/image-1.png)
 
 7. Click Pause, then Play to observe the image generation step-by-step. Click the Step button to advance to the next generated image. To generate all images continuously, click Play without pausing.
 
-![alt text](image-2.png)
+![alt text](Resources/TutorialImages/image-2.png)
 
 8. Navigate to Project Settings > Perception to specify the base path where the dataset will be saved.
 
-![alt text](image-3.png)
+![alt text](Resources/TutorialImages/image-3.png)
 
 **Note:** If you encounter issues during generation, refer to the [Unity Perception Tutorial](https://docs.unity3d.com/Packages/com.unity.perception@1.0/manual/Tutorial/Phase1.html) for guidance on configuring HDRP, camera, and lighting.
 
