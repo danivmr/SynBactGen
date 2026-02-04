@@ -1,7 +1,5 @@
 
-//Logo
-
-![Logo](Resources\Logo\logo_text.png)
+![Logo](Resources/Logo/logo_text.png)
 
 
 # Bacteria Dataset Generator
@@ -14,52 +12,58 @@ The system creates synthetic images alongside automated annotations. Each bacter
 
 ## Tutorials
 
-## 1. Unity tutorial
-How to run the project and generate the datasets
-1. Git clone the project
-2. Open Unity hub and select on add project from disk
+## 1. Unity Setup
+
+### Running the Project and Generating Datasets
+
+1. Clone the repository using Git
+2. Open Unity Hub and select "Add project from disk"
 
 ![alt text](image.png)
 
-3. Select the project inside of SynBactGen\BacteriaGeneratorUnity (the project cloned in the step 1). Use the Editor version 2021.3.18f1.
+3. Navigate to the `BacteriaGeneratorUnity` folder from the cloned repository and select it. Use Unity Editor version 2021.3.18f1.
 
-4. Open the project with the editor version selected before.
+4. Open the project with the selected Editor version.
 
-5. Once the project opens, click on file and open scene, select TecnicalNoteV1.unity. This will load all the configuration needed to the generation.
+5. Once the project opens, go to File > Open Scene and select `TechnicalNoteV1.unity`. This will load the configuration required for dataset generation.
 
-6. Go to the simulation scenario, you will see the randomizers configured. If you want to customize this configuration, you can read the documentation section of randomizers and their configurations. 
+6. Navigate to the simulation scenario to view the configured randomizers. Refer to the Randomizers and Configurations section below for customization details. 
 
 ![alt text](image-1.png)
 
-7. Click on pause and then play to see the generation of image step to step. click on the  Step button to see the next generated image. To generate all without pause, just click on play button without pause.
+7. Click Pause, then Play to observe the image generation step-by-step. Click the Step button to advance to the next generated image. To generate all images continuously, click Play without pausing.
 
 ![alt text](image-2.png)
 
-8. If you go to Project Settings, then perception, you can select the base path where the dataset wil be saved.
+8. Navigate to Project Settings > Perception to specify the base path where the dataset will be saved.
 
 ![alt text](image-3.png)
 
-Special notes: If you have problems with this generation, you can review the perception tutorial where it is explained the configuration of HDRP, camera and light. https://docs.unity3d.com/Packages/com.unity.perception@1.0/manual/Tutorial/Phase1.html
+**Note:** If you encounter issues during generation, refer to the [Unity Perception Tutorial](https://docs.unity3d.com/Packages/com.unity.perception@1.0/manual/Tutorial/Phase1.html) for guidance on configuring HDRP, camera, and lighting.
 
 
-## 2. Training with the dataset generated
+## 2. Dataset Format and Conversion
 
-prerequisited: Download a already generated dataset here (link), or generated a new dataset following the unity tutorial.
+**Prerequisites:** Download a pre-generated dataset (link) or generate a new dataset following the Unity Setup section above.
 
-1. you will have the follow dataset structure.
+### Dataset Structure
 
-* Sequence folders
-    * Step0.camera.png
-    * step0.frame_data.json
+The generated dataset has the following structure:
 
-* anotation_definition.json
-* metadata.json
-* metric_definitions.json
-* sensor_definitions.json
+- **Sequence folders**
+  - `Step0.camera.png`
+  - `step0.frame_data.json`
+- `annotation_definition.json`
+- `metadata.json`
+- `metric_definitions.json`
+- `sensor_definitions.json`
 
-The files inside sequence folders and the anotation_definition.json is used to convert into YOLO format.
+The files within the sequence folders and `annotation_definition.json` are used to convert the dataset to YOLO format.
 
-First, it is required to do a conversion of format, for this, you can use the file ConvertFormatToYOLO.ipynb.
+### Converting to YOLO Format
 
-To this step, please follow the instructions in the same jupyter notebook. JupyterNotebooks\ConvertFormatToYOLO.ipynb
+Use the provided Jupyter notebook to convert the dataset format. Follow the instructions in `JupyterNotebooks/ConvertFormatToYOLO.ipynb`.
 
+## 3. Model Training
+
+Refer to the Jupyter notebook in the `JupyterNotebooks/` folder for training instructions...
