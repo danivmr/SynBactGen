@@ -31,6 +31,8 @@ Use this if you want to generate synthetic data, convert it, and train a custom 
    └─ Output: Trained model, validation metrics, inference results
 ```
 
+**Start here:** [1. Unity Dataset Generation](#1-unity-dataset-generation)
+
 ### Quick Inference Workflow (Using Pre-trained Model)
 Use this if you want to skip dataset generation and training, and directly run inference on your own bacterial images:
 
@@ -45,6 +47,8 @@ Use this if you want to skip dataset generation and training, and directly run i
    └─ Run Inference section in YOLOV26_Proof_Of_Concept.ipynb
    └─ Output: Annotated predictions on your bacterial images
 ```
+
+**Start here:** [Quick Start: Using the Pre-trained Model](#quick-start-using-the-pre-trained-model)
 
 
 ## 1. Unity Dataset Generation
