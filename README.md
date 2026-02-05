@@ -10,6 +10,43 @@ Simulating realistic microbiology data is a challenge due to the need for specia
 The system creates synthetic images alongside automated annotations. Each bacterium's position is marked with a 2D bounding box, generating data compatible with modern object detection frameworks. The dataset's effectiveness is evaluated using the YOLO (You Only Look Once) object detection algorithm.
 
 
+## Workflow Overview
+
+The project supports multiple workflows depending on your goals. **Choose your path below:**
+
+### Complete Workflow (Full Training Pipeline)
+Use this if you want to generate synthetic data, convert it, and train a custom model:
+
+```
+1. Unity Dataset Generation (Section 1)
+   └─ Use BacteriaGeneratorUnity to generate synthetic images and annotations
+   └─ Output: Custom format dataset with JSON annotations
+
+2. Format Conversion (Section 2)
+   └─ Run ConvertFormatToYOLO.ipynb
+   └─ Output: YOLO-compatible dataset with train/valid splits
+
+3. Model Training (Section 3)
+   └─ Run YOLOV26_Proof_Of_Concept.ipynb training section
+   └─ Output: Trained model, validation metrics, inference results
+```
+
+### Quick Inference Workflow (Using Pre-trained Model)
+Use this if you want to skip dataset generation and training, and directly run inference on your own bacterial images:
+
+```
+1. Skip to Section 3 (Model Training and Inference)
+   └─ Go directly to "Quick Start: Using the Pre-trained Model"
+
+2. Load Pre-trained Model
+   └─ Load yolo26-bacteria-det-synbactgen-v1.pt from Models/
+
+3. Direct Inference on Real Images
+   └─ Run Inference section in YOLOV26_Proof_Of_Concept.ipynb
+   └─ Output: Annotated predictions on your bacterial images
+```
+
+
 ## 1. Unity Dataset Generation
 
 ### Prerequisites
@@ -191,32 +228,3 @@ This approach is ideal for:
 - Testing the model on new, unseen bacterial images
 - Quick evaluation without retraining
 - Integration into analysis pipelines
-
-## Workflow Overview
-
-The project supports multiple workflows depending on your goals:
-
-**Complete Workflow (Full Training Pipeline):**
-```
-1. Unity Dataset Generation
-   └─ Use BacteriaGeneratorUnity to generate synthetic images and annotations
-   └─ Output: Custom format dataset with JSON annotations
-
-2. Format Conversion (Local or Colab)
-   └─ Run ConvertFormatToYOLO.ipynb
-   └─ Output: YOLO-compatible dataset with train/valid splits
-
-3. Model Training (Google Colab - Recommended)
-   └─ Run YOLOV26_Proof_Of_Concept.ipynb training section
-   └─ Output: Trained model, validation metrics, inference results
-```
-
-**Quick Inference Workflow (Using Pre-trained Model):**
-```
-1. Open Pre-trained Model
-   └─ Load yolo26-bacteria-det-synbactgen-v1.pt from Models/
-
-2. Direct Inference on Real Images
-   └─ Skip to Inference section in YOLOV26_Proof_Of_Concept.ipynb
-   └─ Output: Annotated predictions on your bacterial images
-```
