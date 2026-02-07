@@ -516,8 +516,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Randomizers:
   - rid: 7244647511982080002
-  - rid: 1899736259178528768
   - rid: 1899736238781628435
+  - rid: 1899736259178528768
   - rid: 1899736260237852672
   - rid: 7244647568107110400
   - rid: 7244647512854757386
@@ -557,16 +557,16 @@ MonoBehaviour:
           - 0.06666667
           - 0.06666667
           - 0.06666667
-          - 0.0333333
-          - 0.0333333
-          - 0.0333333
-          - 0.0333333
-          - 0.0333333
-          - 0.0333333
-          - 0.0333333
-          - 0.0333333
-          - 0.0333333
-          - 0.0333333
+          - 0.3333333
+          - 0.3333333
+          - 0.3333333
+          - 0.3333333
+          - 0.3333333
+          - 0.3333333
+          - 0.3333333
+          - 0.3333333
+          - 0.3333333
+          - 0.3333333
           uniform: 0
           m_Categories:
           - {fileID: 314361168491558560, guid: 265c2379d58d8494d94fc97444258af3, type: 3}
@@ -591,6 +591,8 @@ MonoBehaviour:
           - {fileID: 5191295351792358392, guid: ba3aa02af4eef944e8c2725b9a4b730e, type: 3}
         maxChainLength: 50
         maxBendAngle: 30
+        maxTetradSize: 4
+        probabilityOfTetrad: 0.5
         scale:
           range:
             minimum: 0.2
@@ -602,28 +604,6 @@ MonoBehaviour:
           range:
             minimum: 0
             maximum: 360
-          <minAllowed>k__BackingField: 0
-          <maxAllowed>k__BackingField: 0
-          <shouldCheckValidRange>k__BackingField: 0
-        enableColorHeritage: 0
-        hueSampler:
-          range:
-            minimum: 0
-            maximum: 1
-          <minAllowed>k__BackingField: 0
-          <maxAllowed>k__BackingField: 0
-          <shouldCheckValidRange>k__BackingField: 0
-        saturationSampler:
-          range:
-            minimum: 0
-            maximum: 1
-          <minAllowed>k__BackingField: 0
-          <maxAllowed>k__BackingField: 0
-          <shouldCheckValidRange>k__BackingField: 0
-        valueSampler:
-          range:
-            minimum: 0
-            maximum: 1
           <minAllowed>k__BackingField: 0
           <maxAllowed>k__BackingField: 0
           <shouldCheckValidRange>k__BackingField: 0

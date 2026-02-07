@@ -25,15 +25,13 @@ namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
         public int maxChainLength = 6;
         public float maxBendAngle = 25f;
 
+        [Header("Tetrads Behaviour")]
+        public int maxTetradSize = 4;
+        public float probabilityOfTetrad = 0.3f;
+
         [Header("Transform Samplers")]
         public UniformSampler scale = new UniformSampler(0.2f, 0.8f);
         public UniformSampler rotationSampler = new UniformSampler(0f, 360f);
-
-        [Header("Color random Settings")]
-        public bool enableColorHeritage = true;
-        public UniformSampler hueSampler = new UniformSampler(0f, 1f);
-        public UniformSampler saturationSampler = new UniformSampler(0f, 1f);
-        public UniformSampler valueSampler = new UniformSampler(0f, 1f);
 
         GameObject m_Container;
         GameObjectOneWayCache m_GameObjectOneWayCache;
@@ -106,21 +104,73 @@ namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
                 // Use the first label to determine compatible prefabs for the chain
                 string chainLabel = firstLabeling.labels[0];
 
+                if(chainLabel == "sphere")
+                {
+                    // With a certain probability, create a tetrad instead of a chain
+                    if (UnityEngine.Random.value < probabilityOfTetrad)
+                    {
+                        int tetradSize = UnityEngine.Random.Range(2, maxTetradSize + 1);
+                        
+                        // Calculate tetrad positions in a 2x2 grid pattern around the base position
+                        // Spacing based on diameter so they're adjacent/touching
+                        float spacing = scaleSample * 0.08f;
+                        Vector3[] tetradOffsets = new Vector3[]
+                        {
+                            new Vector3(-spacing, -spacing, 0f),  // Bottom-left
+                            new Vector3(spacing, -spacing, 0f),   // Bottom-right
+                            new Vector3(-spacing, spacing, 0f),   // Top-left
+                            new Vector3(spacing, spacing, 0f)     // Top-right
+                        };
+                        
+                        for (int i = 0; i < tetradSize; i++)
+                        {
+                            GameObject prefab = firstPrefab;
+
+                            var instance = m_GameObjectOneWayCache.GetOrInstantiate(prefab);
+
+                            // Set the scale of the game object
+                            instance.transform.localScale = Vector3.one * scaleSample;
+
+                            // Calculate position relative to base position with geometric spacing
+                            Vector3 tetradPos = startPos + tetradOffsets[i];
+                            Vector3 worldPos = tetradPos + offset;
+                            
+                            // Check if position is within placement area bounds
+                            if (worldPos.x - scaleSample * 0.5f < areaMin.x || worldPos.x + scaleSample * 0.5f > areaMax.x ||
+                                worldPos.y - scaleSample * 0.5f < areaMin.y || worldPos.y + scaleSample * 0.5f > areaMax.y)
+                            {
+                                break; // Stop tetrad if object goes outside placement area
+                            }
+                            
+                            instance.transform.position = worldPos;
+                            instance.transform.rotation = rotation;
+                        }
+                        continue; // Skip chain generation for this sample
+                    }
+                }
+                else if(chainLabel == "spiral")
+                {
+                    // Spirals are placed individually without arrangement
+                    GameObject prefab = firstPrefab;
+                    var instance = m_GameObjectOneWayCache.GetOrInstantiate(prefab);
+                    instance.transform.localScale = Vector3.one * scaleSample;
+                    
+                    Vector3 worldPos = startPos + offset;
+                    
+                    // Check if position is within placement area bounds
+                    if (worldPos.x - scaleSample * 0.5f >= areaMin.x && worldPos.x + scaleSample * 0.5f <= areaMax.x &&
+                        worldPos.y - scaleSample * 0.5f >= areaMin.y && worldPos.y + scaleSample * 0.5f <= areaMax.y)
+                    {
+                        instance.transform.position = worldPos;
+                        instance.transform.rotation = rotation;
+                    }
+                    continue; // Skip chain generation for this sample
+                }
+
                 // If no compatible prefabs found, skip this sample
                 if (!m_PrefabsByLabel.TryGetValue(chainLabel, out var compatiblePrefabs) ||
                     compatiblePrefabs.Count == 0)
                     continue;
-
-                // Sample color once per chain if color heritage is enabled
-                Color chainColor = Color.white;
-                if (enableColorHeritage)
-                {
-                    float hue = hueSampler.Sample();
-                    float saturation = saturationSampler.Sample();
-                    float value = valueSampler.Sample();
-                    chainColor = Color.HSVToRGB(hue, saturation, value);
-                    chainColor.a = 1f;
-                }
 
                 for (int i = 0; i < chainLength; i++)
                 {
@@ -136,23 +186,6 @@ namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
 
                     // Apply randomized color
                     var renderer = instance.GetComponentInChildren<Renderer>();
-                    if (renderer != null)
-                    {
-                        if (enableColorHeritage)
-                        {
-                            renderer.material.color = chainColor;
-                        }
-                        else
-                        {
-                            // Sample a unique color for each object when heritage is disabled
-                            float hue = hueSampler.Sample();
-                            float saturation = saturationSampler.Sample();
-                            float value = valueSampler.Sample();
-                            Color objectColor = Color.HSVToRGB(hue, saturation, value);
-                            objectColor.a = 1f;
-                            renderer.material.color = objectColor;
-                        }
-                    }
 
                     // Set the position and rotation of the game object
                     Vector3 worldPos = currentPos + offset;
