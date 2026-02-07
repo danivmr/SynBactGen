@@ -29,6 +29,12 @@ namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
         public UniformSampler scale = new UniformSampler(0.2f, 0.8f);
         public UniformSampler rotationSampler = new UniformSampler(0f, 360f);
 
+        [Header("Color random Settings")]
+        public bool enableColorHeritage = true;
+        public UniformSampler hueSampler = new UniformSampler(0f, 1f);
+        public UniformSampler saturationSampler = new UniformSampler(0f, 1f);
+        public UniformSampler valueSampler = new UniformSampler(0f, 1f);
+
         GameObject m_Container;
         GameObjectOneWayCache m_GameObjectOneWayCache;
 
@@ -45,7 +51,6 @@ namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
                 m_Container.transform,
                 prefabArray,
                 this);
-
 
             // Make a dictionary of prefabs by their labels for chain compatibility
             m_PrefabsByLabel = new Dictionary<string, List<GameObject>>();
@@ -106,6 +111,17 @@ namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
                     compatiblePrefabs.Count == 0)
                     continue;
 
+                // Sample color once per chain if color heritage is enabled
+                Color chainColor = Color.white;
+                if (enableColorHeritage)
+                {
+                    float hue = hueSampler.Sample();
+                    float saturation = saturationSampler.Sample();
+                    float value = valueSampler.Sample();
+                    chainColor = Color.HSVToRGB(hue, saturation, value);
+                    chainColor.a = 1f;
+                }
+
                 for (int i = 0; i < chainLength; i++)
                 {
                     // Randomly select a prefab from the compatible prefabs
@@ -117,6 +133,26 @@ namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
 
                     // Set the scale of the game object
                     instance.transform.localScale = Vector3.one * scaleSample;
+
+                    // Apply randomized color
+                    var renderer = instance.GetComponentInChildren<Renderer>();
+                    if (renderer != null)
+                    {
+                        if (enableColorHeritage)
+                        {
+                            renderer.material.color = chainColor;
+                        }
+                        else
+                        {
+                            // Sample a unique color for each object when heritage is disabled
+                            float hue = hueSampler.Sample();
+                            float saturation = saturationSampler.Sample();
+                            float value = valueSampler.Sample();
+                            Color objectColor = Color.HSVToRGB(hue, saturation, value);
+                            objectColor.a = 1f;
+                            renderer.material.color = objectColor;
+                        }
+                    }
 
                     // Set the position and rotation of the game object
                     Vector3 worldPos = currentPos + offset;
