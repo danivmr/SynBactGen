@@ -542,7 +542,7 @@ MonoBehaviour:
         collapsed: 0
         <enabledStateCanBeSwitchedByUser>k__BackingField: 1
         depth: -1
-        separationDistance: 0.8
+        separationDistance: 0.4
         placementArea: {x: 3.5, y: 3.5}
         prefabs:
           collapsed: 0
@@ -557,16 +557,16 @@ MonoBehaviour:
           - 0.06666667
           - 0.06666667
           - 0.06666667
-          - 0.3333333
-          - 0.3333333
-          - 0.3333333
-          - 0.3333333
-          - 0.3333333
-          - 0.3333333
-          - 0.3333333
-          - 0.3333333
-          - 0.3333333
-          - 0.3333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
           uniform: 0
           m_Categories:
           - {fileID: 314361168491558560, guid: 265c2379d58d8494d94fc97444258af3, type: 3}
@@ -589,8 +589,9 @@ MonoBehaviour:
           - {fileID: 6913930954911286827, guid: c912490fb90855b409fdda09f90bcae6, type: 3}
           - {fileID: 7412354605256829386, guid: a1c93e04bf0220d4abff325f80895138, type: 3}
           - {fileID: 5191295351792358392, guid: ba3aa02af4eef944e8c2725b9a4b730e, type: 3}
-        maxChainLength: 50
+        maxChainLength: 10
         maxBendAngle: 30
+        probabilityOfChain: 0.5
         maxTetradSize: 4
         probabilityOfTetrad: 0.5
         scale:
