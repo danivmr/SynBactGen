@@ -539,10 +539,10 @@ MonoBehaviour:
         asm: Assembly-CSharp}
       data:
         m_Enabled: 1
-        collapsed: 0
+        collapsed: 1
         <enabledStateCanBeSwitchedByUser>k__BackingField: 1
         depth: -1
-        separationDistance: 0.4
+        separationDistance: 0.8
         placementArea: {x: 3.5, y: 3.5}
         prefabs:
           collapsed: 0
@@ -589,11 +589,11 @@ MonoBehaviour:
           - {fileID: 6913930954911286827, guid: c912490fb90855b409fdda09f90bcae6, type: 3}
           - {fileID: 7412354605256829386, guid: a1c93e04bf0220d4abff325f80895138, type: 3}
           - {fileID: 5191295351792358392, guid: ba3aa02af4eef944e8c2725b9a4b730e, type: 3}
-        maxChainLength: 10
+        maxChainLength: 50
         maxBendAngle: 30
         probabilityOfChain: 0.5
-        maxTetradSize: 4
-        probabilityOfTetrad: 0.5
+        maxClusterSize: 50
+        probabilityOfCluster: 0.3
         scale:
           range:
             minimum: 0.2
