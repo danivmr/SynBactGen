@@ -516,16 +516,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Randomizers:
   - rid: 7244647511982080002
-  - rid: 1899736238781628435
+  - rid: 1899736773819891712
+  - rid: 1899736507122712576
   - rid: 1899736259178528768
   - rid: 1899736260237852672
   - rid: 7244647568107110400
   - rid: 7244647512854757386
   configuration: {fileID: 0}
   constants:
-    randomSeed: 539662031
+    randomSeed: 847193520
     startIteration: 0
-    iterationCount: 300
+    iterationCount: 500
     totalIterations: 100
     instanceCount: 1
     instanceIndex: 0
@@ -534,80 +535,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 1899736238781628435
-      type: {class: ForegroundPlacementRandomizer, ns: UnityEngine.Perception.Randomization.Randomizers.SynBactGen,
-        asm: Assembly-CSharp}
-      data:
-        m_Enabled: 1
-        collapsed: 0
-        <enabledStateCanBeSwitchedByUser>k__BackingField: 1
-        depth: -1
-        separationDistance: 0.8
-        placementArea: {x: 3.5, y: 3.5}
-        prefabs:
-          collapsed: 0
-          probabilities:
-          - 0.06666667
-          - 0.06666667
-          - 0.06666667
-          - 0.06666667
-          - 0.06666667
-          - 0.06666667
-          - 0.06666667
-          - 0.06666667
-          - 0.06666667
-          - 0.06666667
-          - 0.0333333
-          - 0.0333333
-          - 0.0333333
-          - 0.0333333
-          - 0.0333333
-          - 0.0333333
-          - 0.0333333
-          - 0.0333333
-          - 0.0333333
-          - 0.0333333
-          uniform: 0
-          m_Categories:
-          - {fileID: 314361168491558560, guid: 265c2379d58d8494d94fc97444258af3, type: 3}
-          - {fileID: 2643603014551117484, guid: 88e7185d72e80b44ba1c56fbefec7fe6, type: 3}
-          - {fileID: 8412319703154656354, guid: 851e17b6fb984f04183fe11966b6d2c5, type: 3}
-          - {fileID: 5828355695286525670, guid: 4e5d4a5fe2a4e2342bd650824cf27c40, type: 3}
-          - {fileID: 5308029270839563665, guid: 3a4b89a77c426d343b63082df4b461af, type: 3}
-          - {fileID: 7439164926875552211, guid: f60325a249924844b8f6c1b72c5f01a6, type: 3}
-          - {fileID: 2935443229651222789, guid: 0d1f031beb4de8844a22f93d1372b317, type: 3}
-          - {fileID: 1565426613688229025, guid: 7d27ba81f8883bf45b3ce8728299d3d1, type: 3}
-          - {fileID: 8182015057465381888, guid: 9baf6bdaa7a2c6543afddb9e49ff8d01, type: 3}
-          - {fileID: 3559401911812669057, guid: 61b0048e1c0210747a3644ba37426828, type: 3}
-          - {fileID: 4872114827939821117, guid: 029a054b39845994099e4d2b42d5d841, type: 3}
-          - {fileID: 3936701490332847321, guid: 42d83794af1f046458bd9550acd13502, type: 3}
-          - {fileID: 1049427433257418188, guid: 45da6bd6f00963347996841f95c08ae2, type: 3}
-          - {fileID: 464964430358706715, guid: 12a4bb2dcb6416d48bd9b191a03cc130, type: 3}
-          - {fileID: 6860434769842514432, guid: 8635ac5cf5f780a44af68047d2c9a24d, type: 3}
-          - {fileID: 4397379289384918348, guid: fba455888216faa4f9dba96640f78e6d, type: 3}
-          - {fileID: 1662615701097186370, guid: 69dbf0db654b37d4b915deb4dd8cc865, type: 3}
-          - {fileID: 6913930954911286827, guid: c912490fb90855b409fdda09f90bcae6, type: 3}
-          - {fileID: 7412354605256829386, guid: a1c93e04bf0220d4abff325f80895138, type: 3}
-          - {fileID: 5191295351792358392, guid: ba3aa02af4eef944e8c2725b9a4b730e, type: 3}
-        maxChainLength: 50
-        maxBendAngle: 30
-        probabilityOfChain: 0.5
-        maxClusterSize: 50
-        probabilityOfCluster: 0.3
-        scale:
-          range:
-            minimum: 0.2
-            maximum: 0.3
-          <minAllowed>k__BackingField: 0
-          <maxAllowed>k__BackingField: 0
-          <shouldCheckValidRange>k__BackingField: 0
-        rotationSampler:
-          range:
-            minimum: 0
-            maximum: 360
-          <minAllowed>k__BackingField: 0
-          <maxAllowed>k__BackingField: 0
-          <shouldCheckValidRange>k__BackingField: 0
     - rid: 1899736259178528768
       type: {class: ColorRandomizer, ns: UnityEngine.Perception.Randomization.Randomizers,
         asm: Unity.Perception.Runtime}
@@ -708,6 +635,135 @@ MonoBehaviour:
         <minAllowed>k__BackingField: 0
         <maxAllowed>k__BackingField: 0
         <shouldCheckValidRange>k__BackingField: 0
+    - rid: 1899736507122712576
+      type: {class: ForegroundObjectPlacementRandomizer, ns: UnityEngine.Perception.Randomization.Randomizers,
+        asm: Unity.Perception.Runtime}
+      data:
+        m_Enabled: 0
+        collapsed: 1
+        <enabledStateCanBeSwitchedByUser>k__BackingField: 1
+        depth: -1
+        separationDistance: 0.8
+        placementArea: {x: 3.5, y: 3.5}
+        prefabs:
+          collapsed: 0
+          probabilities:
+          - 0.06666667
+          - 0.06666667
+          - 0.06666667
+          - 0.06666667
+          - 0.06666667
+          - 0.06666667
+          - 0.06666667
+          - 0.06666667
+          - 0.06666667
+          - 0.06666667
+          - 0.06666667
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          uniform: 0
+          m_Categories:
+          - {fileID: 314361168491558560, guid: 265c2379d58d8494d94fc97444258af3, type: 3}
+          - {fileID: 2643603014551117484, guid: 88e7185d72e80b44ba1c56fbefec7fe6, type: 3}
+          - {fileID: 8412319703154656354, guid: 851e17b6fb984f04183fe11966b6d2c5, type: 3}
+          - {fileID: 5828355695286525670, guid: 4e5d4a5fe2a4e2342bd650824cf27c40, type: 3}
+          - {fileID: 5308029270839563665, guid: 3a4b89a77c426d343b63082df4b461af, type: 3}
+          - {fileID: 7439164926875552211, guid: f60325a249924844b8f6c1b72c5f01a6, type: 3}
+          - {fileID: 2935443229651222789, guid: 0d1f031beb4de8844a22f93d1372b317, type: 3}
+          - {fileID: 1565426613688229025, guid: 7d27ba81f8883bf45b3ce8728299d3d1, type: 3}
+          - {fileID: 8182015057465381888, guid: 9baf6bdaa7a2c6543afddb9e49ff8d01, type: 3}
+          - {fileID: 3559401911812669057, guid: 61b0048e1c0210747a3644ba37426828, type: 3}
+          - {fileID: 4872114827939821117, guid: 029a054b39845994099e4d2b42d5d841, type: 3}
+          - {fileID: 3936701490332847321, guid: 42d83794af1f046458bd9550acd13502, type: 3}
+          - {fileID: 1049427433257418188, guid: 45da6bd6f00963347996841f95c08ae2, type: 3}
+          - {fileID: 464964430358706715, guid: 12a4bb2dcb6416d48bd9b191a03cc130, type: 3}
+          - {fileID: 6860434769842514432, guid: 8635ac5cf5f780a44af68047d2c9a24d, type: 3}
+          - {fileID: 4397379289384918348, guid: fba455888216faa4f9dba96640f78e6d, type: 3}
+          - {fileID: 1662615701097186370, guid: 69dbf0db654b37d4b915deb4dd8cc865, type: 3}
+          - {fileID: 6913930954911286827, guid: c912490fb90855b409fdda09f90bcae6, type: 3}
+          - {fileID: 7412354605256829386, guid: a1c93e04bf0220d4abff325f80895138, type: 3}
+          - {fileID: 5191295351792358392, guid: ba3aa02af4eef944e8c2725b9a4b730e, type: 3}
+    - rid: 1899736773819891712
+      type: {class: BacteriaPlacementRandomizer, ns: UnityEngine.Perception.Randomization.Randomizers.SynBactGen,
+        asm: Assembly-CSharp}
+      data:
+        m_Enabled: 1
+        collapsed: 1
+        <enabledStateCanBeSwitchedByUser>k__BackingField: 1
+        depth: -1
+        separationDistance: 0.8
+        placementArea: {x: 3.5, y: 3.5}
+        prefabs:
+          collapsed: 0
+          probabilities:
+          - 0.06666667
+          - 0.06666667
+          - 0.06666667
+          - 0.06666667
+          - 0.06666667
+          - 0.06666667
+          - 0.06666667
+          - 0.06666667
+          - 0.06666667
+          - 0.06666667
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          - 0.0333333
+          uniform: 0
+          m_Categories:
+          - {fileID: 314361168491558560, guid: 265c2379d58d8494d94fc97444258af3, type: 3}
+          - {fileID: 2643603014551117484, guid: 88e7185d72e80b44ba1c56fbefec7fe6, type: 3}
+          - {fileID: 8412319703154656354, guid: 851e17b6fb984f04183fe11966b6d2c5, type: 3}
+          - {fileID: 5828355695286525670, guid: 4e5d4a5fe2a4e2342bd650824cf27c40, type: 3}
+          - {fileID: 5308029270839563665, guid: 3a4b89a77c426d343b63082df4b461af, type: 3}
+          - {fileID: 7439164926875552211, guid: f60325a249924844b8f6c1b72c5f01a6, type: 3}
+          - {fileID: 2935443229651222789, guid: 0d1f031beb4de8844a22f93d1372b317, type: 3}
+          - {fileID: 1565426613688229025, guid: 7d27ba81f8883bf45b3ce8728299d3d1, type: 3}
+          - {fileID: 8182015057465381888, guid: 9baf6bdaa7a2c6543afddb9e49ff8d01, type: 3}
+          - {fileID: 3559401911812669057, guid: 61b0048e1c0210747a3644ba37426828, type: 3}
+          - {fileID: 4872114827939821117, guid: 029a054b39845994099e4d2b42d5d841, type: 3}
+          - {fileID: 3936701490332847321, guid: 42d83794af1f046458bd9550acd13502, type: 3}
+          - {fileID: 1049427433257418188, guid: 45da6bd6f00963347996841f95c08ae2, type: 3}
+          - {fileID: 464964430358706715, guid: 12a4bb2dcb6416d48bd9b191a03cc130, type: 3}
+          - {fileID: 6860434769842514432, guid: 8635ac5cf5f780a44af68047d2c9a24d, type: 3}
+          - {fileID: 4397379289384918348, guid: fba455888216faa4f9dba96640f78e6d, type: 3}
+          - {fileID: 1662615701097186370, guid: 69dbf0db654b37d4b915deb4dd8cc865, type: 3}
+          - {fileID: 6913930954911286827, guid: c912490fb90855b409fdda09f90bcae6, type: 3}
+          - {fileID: 7412354605256829386, guid: a1c93e04bf0220d4abff325f80895138, type: 3}
+          - {fileID: 5191295351792358392, guid: ba3aa02af4eef944e8c2725b9a4b730e, type: 3}
+        maxChainLength: 50
+        maxBendAngle: 30
+        probabilityOfChain: 0.5
+        maxClusterSize: 50
+        probabilityOfCluster: 0.3
+        scale:
+          range:
+            minimum: 0.2
+            maximum: 0.3
+          <minAllowed>k__BackingField: 0
+          <maxAllowed>k__BackingField: 0
+          <shouldCheckValidRange>k__BackingField: 0
+        rotationSampler:
+          range:
+            minimum: 0
+            maximum: 360
+          <minAllowed>k__BackingField: 0
+          <maxAllowed>k__BackingField: 0
+          <shouldCheckValidRange>k__BackingField: 0
     - rid: 7244647511982080002
       type: {class: BackgroundObjectPlacementRandomizer, ns: UnityEngine.Perception.Randomization.Randomizers,
         asm: Unity.Perception.Runtime}

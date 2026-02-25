@@ -11,9 +11,9 @@ using UnityEngine.Perception.GroundTruth.LabelManagement;
 namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
 {
     [Serializable]
-    [AddRandomizerMenu("SynBactGen/Foreground Placement Randomizer")]
+    [AddRandomizerMenu("SynBactGen/Foreground Object Placement Randomizer")]
     [MovedFrom("UnityEngine.Perception.Randomization.Randomizers.SynBactGen")]
-    public class ForegroundPlacementRandomizer : Randomizer
+    public class BacteriaPlacementRandomizer : Randomizer
     {
         [Header("Placement Settings")]
         public float depth;
@@ -29,6 +29,7 @@ namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
         [Header("Grape Cluster Behaviour")]
         public int maxClusterSize = 4;
         public float probabilityOfCluster = 0.3f;
+
 
         [Header("Transform Samplers")]
         public UniformSampler scale = new UniformSampler(0.2f, 0.8f);
@@ -81,6 +82,7 @@ namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
             var clusterProbabilitySampler = new UniformSampler(0f, 1f);
             var clusterSizeSampler = new UniformSampler(2f, maxClusterSize + 1f);
             var chainLengthSampler = new UniformSampler(1f, maxChainLength + 1f);
+            
             var chainProbabilitySampler = new UniformSampler(0f, 1f);
             var radiusSampler = new UniformSampler(0f, 1f);
             var angleSampler = new UniformSampler(0f, 360f);
@@ -126,7 +128,7 @@ namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
                         float sphereDiameter = testInstance.GetComponentInChildren<Renderer>().bounds.size.x;
                         m_GameObjectOneWayCache.ResetObject(testInstance);
                         
-                        float maxRadius = sphereDiameter * 3.0f; // Maximum radius for cluster spread
+                        float maxRadius = sphereDiameter * 3.0f; 
                         
                         List<Vector3> clusterPositions = new List<Vector3>();
                         clusterPositions.Add(startPos); // Add center sphere first
