@@ -29,7 +29,7 @@ This section shows you how to run a pre-trained model on bacterial images using 
 2. Skip to the **Inference and Results Visualization** section (Section 3)
 3. Load the pre-trained model from `Models/yolo26-bacteria-det-synbactgen-v1.pt`
 4. Use the images provided in this repository or provide your real bacterial images in the `source` parameter.
-5. The notebook will generate annotated predictions with detected bacterial objects and confidence scores in the runs/detection/prediction directory folder
+5. The notebook will generate annotated predictions with detected bacterial objects and confidence scores in the runs/detect/predict directory folder
 
 This approach is ideal for:
 - Testing the model on the provided example images or predict position and shape on new, unseen bacterial images
