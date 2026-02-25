@@ -11,9 +11,9 @@ using UnityEngine.Perception.GroundTruth.LabelManagement;
 namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
 {
     [Serializable]
-    [AddRandomizerMenu("SynBactGen/Foreground Placement Randomizer")]
+    [AddRandomizerMenu("SynBactGen/Foreground Object Placement Randomizer")]
     [MovedFrom("UnityEngine.Perception.Randomization.Randomizers.SynBactGen")]
-    public class ForegroundPlacementRandomizer : Randomizer
+    public class BacteriaPlacementRandomizer : Randomizer
     {
         [Header("Placement Settings")]
         public float depth;
@@ -29,6 +29,7 @@ namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
         [Header("Grape Cluster Behaviour")]
         public int maxClusterSize = 4;
         public float probabilityOfCluster = 0.3f;
+
 
         [Header("Transform Samplers")]
         public UniformSampler scale = new UniformSampler(0.2f, 0.8f);
@@ -77,11 +78,19 @@ namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
             var samples = PoissonDiskSampling.GenerateSamples(
                 placementArea.x, placementArea.y, separationDistance, seed);
 
+            // Create samplers for all random operations using perception seed system
+            var clusterProbabilitySampler = new UniformSampler(0f, 1f);
+            var clusterSizeSampler = new UniformSampler(2f, maxClusterSize + 1f);
+            var chainLengthSampler = new UniformSampler(1f, maxChainLength + 1f);
+            
+            var chainProbabilitySampler = new UniformSampler(0f, 1f);
+            var radiusSampler = new UniformSampler(0f, 1f);
+            var angleSampler = new UniformSampler(0f, 360f);
+            var prefabIndexSampler = new UniformSampler(0f, 1f);
+            var bendSamplerInstance = new UniformSampler(-maxBendAngle, maxBendAngle);
+
             // Center the placement area around the origin
             var offset = new Vector3(placementArea.x, placementArea.y, 0f) * -0.5f;
-            var bendSampler = new UniformSampler(-maxBendAngle, maxBendAngle);
-
-            float chainProbabilitySample = UnityEngine.Random.value;
             // Calculate placement area bounds
             Vector3 areaMin = offset;
             Vector3 areaMax = offset + new Vector3(placementArea.x, placementArea.y, 0f);
@@ -91,10 +100,11 @@ namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
                 Vector3 startPos = new Vector3(sample.x, sample.y, depth);
                 Quaternion rotation = Quaternion.Euler(0f, 0f, rotationSampler.Sample());
 
-                int chainLength = UnityEngine.Random.Range(1, maxChainLength + 1);
+                int chainLength = (int)chainLengthSampler.Sample();
                 Vector3 currentPos = startPos;
 
                 GameObject firstPrefab = prefabs.Sample();
+
 
                 // Ensure the first prefab has labeling and compatible prefabs exist
                 if (!firstPrefab.TryGetComponent<Labeling>(out var firstLabeling) ||
@@ -107,9 +117,9 @@ namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
                 if(chainLabel == "sphere")
                 {
                     // With a certain probability, create a grape cluster instead of a chain
-                    if (UnityEngine.Random.value < probabilityOfCluster)
+                    if (clusterProbabilitySampler.Sample() < probabilityOfCluster)
                     {
-                        int clusterSize = UnityEngine.Random.Range(2, maxClusterSize + 1);
+                        int clusterSize = (int)clusterSizeSampler.Sample();
                         float scaleSample = scale.Sample();
                         
                         // Get the actual bounds of the sphere at the given scale
@@ -118,7 +128,7 @@ namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
                         float sphereDiameter = testInstance.GetComponentInChildren<Renderer>().bounds.size.x;
                         m_GameObjectOneWayCache.ResetObject(testInstance);
                         
-                        float maxRadius = sphereDiameter * 3.0f; // Maximum radius for cluster spread
+                        float maxRadius = sphereDiameter * 3.0f; 
                         
                         List<Vector3> clusterPositions = new List<Vector3>();
                         clusterPositions.Add(startPos); // Add center sphere first
@@ -132,8 +142,9 @@ namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
                             // Try to find a position that doesn't overlap with existing spheres
                             while (!validPosition && attempts < 20)
                             {
-                                float randomRadius = UnityEngine.Random.Range(sphereDiameter * 0.8f, maxRadius);
-                                float randomAngle = UnityEngine.Random.Range(0f, 360f) * Mathf.Deg2Rad;
+                                var radiusSamplerInstance = new UniformSampler(sphereDiameter * 0.8f, maxRadius);
+                                float randomRadius = radiusSamplerInstance.Sample();
+                                float randomAngle = angleSampler.Sample() * Mathf.Deg2Rad;
                                 
                                 Vector3 clusterOffset = new Vector3(
                                     Mathf.Cos(randomAngle) * randomRadius,
@@ -213,13 +224,13 @@ namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
                     continue;
 
                 // Check chain probability
+                float chainProbabilitySample = chainProbabilitySampler.Sample();
                 if (chainProbabilitySample >= probabilityOfChain)
                 {
                     // Place a single object instead of skipping
                     float scaleSample = scale.Sample();
-                    GameObject prefab = compatiblePrefabs[
-                        UnityEngine.Random.Range(0, compatiblePrefabs.Count)
-                    ];
+                    int prefabIndex = (int)(prefabIndexSampler.Sample() * compatiblePrefabs.Count);
+                    GameObject prefab = compatiblePrefabs[prefabIndex];
 
                     var instance = m_GameObjectOneWayCache.GetOrInstantiate(prefab);
                     instance.transform.localScale = Vector3.one * scaleSample;
@@ -240,9 +251,8 @@ namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
                 {
                     float scaleSample = scale.Sample();
                     // Randomly select a prefab from the compatible prefabs
-                    GameObject prefab = compatiblePrefabs[
-                        UnityEngine.Random.Range(0, compatiblePrefabs.Count)
-                    ];
+                    int prefabIndex = (int)(prefabIndexSampler.Sample() * compatiblePrefabs.Count);
+                    GameObject prefab = compatiblePrefabs[prefabIndex];
 
                     var instance = m_GameObjectOneWayCache.GetOrInstantiate(prefab);
 
@@ -274,7 +284,7 @@ namespace UnityEngine.Perception.Randomization.Randomizers.SynBactGen
 
                     currentPos = nextPos;
                     // Apply a slight bend for the next object in the chain
-                    rotation *= Quaternion.Euler(0f, 0f, bendSampler.Sample());
+                    rotation *= Quaternion.Euler(0f, 0f, bendSamplerInstance.Sample());
                 }
             }
 
